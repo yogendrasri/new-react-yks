@@ -62,7 +62,9 @@ spec:
             - name: LOG_LEVEL
               value: {{ .Values.logLevel | quote }}
             - name: redirectUri
-              value: "https://sandbox-ocp431-on-651721-89dadfe96916fcd27b299431d0240c37-0000.eu-gb.containers.appdomain.cloud:{{ .Values.image.port }}/ibm/cloud/appid/callback" 
+              value: "http://{CLUSTER_ENDPOINT}:{{ .Values.image.port }}/ibm/cloud/appid/callback" 
+            - name: clusterendpoint
+              value: {{ .Values.image }}
             - name: APPID_SERVICE_BINDING
               valueFrom:
                secretKeyRef:
